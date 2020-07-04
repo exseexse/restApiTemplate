@@ -27,7 +27,7 @@ namespace restApiTemplateUOW.UnitOfWork
         private bool _disposed = false;
         private IParentEntityRepository _IParentEntityRepository;
         private IChildEntityRepository _IChildEntityRepository;
-        public IParentEntityRepository BatchRepository
+        public IParentEntityRepository ParentEntityRepository
         {
             get
             {
@@ -37,7 +37,7 @@ namespace restApiTemplateUOW.UnitOfWork
             }
         }
 
-        public IChildEntityRepository MachineRepository
+        public IChildEntityRepository ChildEntityRepository
         {
             get
             {

@@ -9,46 +9,47 @@ namespace restApiTemplateUOW.GenericRepository
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        private readonly DbSet<T> _entities;
+        private DbContext _context;
 
         public GenericRepository(DbContext context)
         {
-            _entities = context.Set<T>();
+            this._context = context;
         }
 
         public T GetById(int id)
         {
-            return _entities.Find(id);
+            return _context.Set<T>().Find(id);
         }
 
         public IEnumerable<T> GetAll()
         {
-            return _entities.ToList();
+            return _context.Set<T>().ToList();
         }
 
         public IEnumerable<T> Find(Expression<Func<T, bool>> predicate)
         {
-            return _entities.Where(predicate);
+            return _context.Set<T>().Where(predicate);
         }
 
         public void Add(T entity)
         {
-            _entities.Add(entity);
+            _context.Add(entity);
+            _context.SaveChanges();
         }
 
         public void AddRange(IEnumerable<T> entities)
         {
-            _entities.AddRange(entities);
+            _context.AddRange(entities);
         }
 
         public void Remove(T entity)
         {
-            _entities.Remove(entity);
+            _context.Remove(entity);
         }
 
         public void RemoveRange(IEnumerable<T> entities)
         {
-            _entities.RemoveRange(entities);
+            _context.RemoveRange(entities);
         }
     }
 }

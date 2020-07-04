@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using restApiTemplateDBEntities;
+using restApiTemplateSqliteDB;
+using restApiTemplateUOW.UnitOfWork;
 
 namespace restApiTemplate.Controllers
 {
@@ -14,7 +17,18 @@ namespace restApiTemplate.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
+            using (UnitOfWork worker = new UnitOfWork(new sqliteDbContext()))
+            {
+                ParentEntity newParent = new ParentEntity();
+                newParent.createdDate = DateTime.Now;
+                newParent.name = "NewParent";
+                newParent.sequenceNo = 1;
+                worker.ParentEntityRepository.Add(newParent);
+       
+            }
             return new string[] { "value1", "value2" };
+
+         
         }
 
         // GET api/values/5
