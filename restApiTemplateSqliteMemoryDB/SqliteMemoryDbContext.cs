@@ -22,7 +22,7 @@ namespace restApiTemplateSqliteDB
         protected override void OnConfiguring(DbContextOptionsBuilder optionbuilder)
         {
             string pathGroups = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            optionbuilder.UseSqlite(@"Data Source=" + pathGroups + "ArchieveDB1.db");
+            optionbuilder.UseSqlite(@"Data Source=" + pathGroups + "ArchieveDB.db");
 
         }
     }
