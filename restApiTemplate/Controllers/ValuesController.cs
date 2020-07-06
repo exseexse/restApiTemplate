@@ -27,15 +27,6 @@ namespace restApiTemplate.Controllers
                 worker.ParentEntityRepository.Add(newParent);
        
             }
-            using (UnitOfWork worker = new UnitOfWork(new SqliteTestDbContext()))
-            {
-                ParentEntity newParent = new ParentEntity();
-                newParent.createdDate = DateTime.Now;
-                newParent.name = "NewParent";
-                newParent.sequenceNo = 1;
-                worker.ParentEntityRepository.Add(newParent);
-
-            }
             return new string[] { "value1", "value2" };
 
          
