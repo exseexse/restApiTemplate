@@ -35,12 +35,28 @@ namespace Tests
                 newParent.ChildEntity.Add(newChild);
 
                 SubClassEntity newSubClass = new SubClassEntity();
-                var createSubClassDate = new DateTime(2020, 1, 10, 11, 25, 20);
+                var createSubClassDate = new DateTime(2026, 6, 13, 10, 11, 12);
                 newSubClass.createdDate = createSubClassDate;
                 newSubClass.name = "NewSubClass";
                 newSubClass.sequenceNo = 102;
 
                 newParent.SubClassEntity = newSubClass;
+
+                BranchEntity newFirstBranch = new BranchEntity();
+                var newFirstBranchDate = new DateTime(2023, 2, 14, 14, 22, 15);
+                newFirstBranch.createdDate = newFirstBranchDate;
+                newFirstBranch.name = "NewSubClass";
+                newFirstBranch.sequenceNo = 102;
+                newParent.FirstBranch.Add(newFirstBranch);
+
+
+                BranchEntity newSecondBranch = new BranchEntity();
+                var newSecondBranchDate = new DateTime(2024, 6, 24, 10, 35, 7);
+                newSecondBranch.createdDate = newSecondBranchDate;
+                newSecondBranch.name = "NewSubClass";
+                newSecondBranch.sequenceNo = 102;
+                newParent.SecondBranch.Add(newSecondBranch);
+
                 worker.ParentEntityRepository.Add(newParent);
 
 
@@ -100,6 +116,8 @@ namespace Tests
                 Assert.AreEqual(0, newSubClassDb.Count);
             }
         }
+
+      
 
 
         [Test, Order(4)]
