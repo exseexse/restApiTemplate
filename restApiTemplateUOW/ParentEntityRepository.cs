@@ -4,13 +4,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace restApiTemplateUOW
 {   
     public interface IParentEntityRepository : IGenericRepository<ParentEntity>
     {
         Expression<Func<ParentEntity, bool>> searchExpression(string searchText);
-  
+        IEnumerable<ParentEntity> getOrdered(SearchModel searchModel, Expression<Func<ParentEntity, bool>> filter = null);
     }
 
     public class ParentEntityRepository : GenericRepository<ParentEntity>, IParentEntityRepository
@@ -22,6 +24,19 @@ namespace restApiTemplateUOW
         }
 
         private readonly EntityTemplateDbContext _customerDbEntities;
+
+        public IEnumerable<ParentEntity> getOrdered(SearchModel searchModel, Expression<Func<ParentEntity, bool>> filter = null)
+        {
+            return _customerDbEntities.ParentEntity.Where(filter).Include(s => s.SubClassEntity)
+                                        .GroupBy(x => new { x.department, x.gender, x.name })
+                                        .OrderBy(g => g.Key.department).ThenBy(g => g.Key.gender.ToString()).ThenBy(g => g.Key.name)
+                                        .Select(g => new
+                                        {
+                                            Dept = g.Key.department,
+                                            Date = g.Key.gender,
+                                            Persons = g.OrderBy(x=>x.name),
+                                        }).SelectMany(s => s.Persons).Skip(searchModel.skip).Take(searchModel.take);
+        }
 
         public Expression<Func<ParentEntity, bool>> searchExpression(string searchText)
         {

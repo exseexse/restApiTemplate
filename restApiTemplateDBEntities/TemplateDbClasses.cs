@@ -31,6 +31,8 @@ namespace restApiTemplateDBEntities
 
         public int Id { get; set; }
         public string name { get; set; }
+        public string department { get; set; }
+        public string gender { get; set; }
         public DateTime createdDate { get; set; }
         public int sequenceNo { get; set; }
 
