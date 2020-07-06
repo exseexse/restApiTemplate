@@ -14,7 +14,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\restApiTemplateSqliteDB\restApiTemplateSqliteDB.csproj" />
-    <ProjectReference Include="..\restApiTemplateSqliteMemoryDB\restApiTemplateSqliteMemoryDB.csproj" />
     <ProjectReference Include="..\restApiTemplateSqliteTestDB\restApiTemplateSqliteTestDB.csproj" />
     <ProjectReference Include="..\restApiTemplateUOW\restApiTemplateUOW.csproj" />
   </ItemGroup>

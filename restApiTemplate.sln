@@ -9,13 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "restApiTemplateTests", "res
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "restApiTemplateSqliteDB", "restApiTemplateSqliteDB\restApiTemplateSqliteDB.csproj", "{E6964C09-1D08-40A9-96D2-64940E35C407}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "restApiTemplateSqliteMemoryDB", "restApiTemplateSqliteMemoryDB\restApiTemplateSqliteMemoryDB.csproj", "{7F7EB891-4D01-4357-882F-84A34EF85F7F}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "restApiTemplateDBEntities", "restApiTemplateDBEntities\restApiTemplateDBEntities.csproj", "{D5ABDE33-8504-46B9-A2B0-A2185267C431}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "restApiTemplateUOW", "restApiTemplateUOW\restApiTemplateUOW.csproj", "{304194EF-D816-473A-9B8E-66DC2A52E9B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "restApiTemplateSqliteTestDB", "restApiTemplateSqliteTestDB\restApiTemplateSqliteTestDB.csproj", "{4D8A1300-9258-4F66-AE7D-A87677B07A37}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "restApiTemplateSqliteTestDB", "restApiTemplateSqliteTestDB\restApiTemplateSqliteTestDB.csproj", "{4D8A1300-9258-4F66-AE7D-A87677B07A37}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +33,6 @@ Global
 		{E6964C09-1D08-40A9-96D2-64940E35C407}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6964C09-1D08-40A9-96D2-64940E35C407}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6964C09-1D08-40A9-96D2-64940E35C407}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7F7EB891-4D01-4357-882F-84A34EF85F7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7F7EB891-4D01-4357-882F-84A34EF85F7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7F7EB891-4D01-4357-882F-84A34EF85F7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7F7EB891-4D01-4357-882F-84A34EF85F7F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D5ABDE33-8504-46B9-A2B0-A2185267C431}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D5ABDE33-8504-46B9-A2B0-A2185267C431}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5ABDE33-8504-46B9-A2B0-A2185267C431}.Release|Any CPU.ActiveCfg = Release|Any CPU

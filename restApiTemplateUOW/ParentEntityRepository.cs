@@ -27,14 +27,25 @@ namespace restApiTemplateUOW
 
         public IEnumerable<ParentEntity> getOrdered(SearchModel searchModel, Expression<Func<ParentEntity, bool>> filter = null)
         {
-            return _customerDbEntities.ParentEntity.Where(filter).Include(s => s.SubClassEntity)
+            return _customerDbEntities.ParentEntity.Where(filter)
                                         .GroupBy(x => new { x.department, x.gender, x.name })
                                         .OrderBy(g => g.Key.department).ThenBy(g => g.Key.gender.ToString()).ThenBy(g => g.Key.name)
                                         .Select(g => new
                                         {
                                             Dept = g.Key.department,
                                             Date = g.Key.gender,
-                                            Persons = g.OrderBy(x=>x.name),
+                                            Persons = g.OrderBy(x=>x.name).Select(sc=>new ParentEntity{
+                                                name=sc.name,
+                                                sequenceNo=sc.sequenceNo,
+                                                SubClassEntity=sc.SubClassEntity != null ?
+                                                              new SubClassEntity
+                                                              {
+                                                                  name = sc.SubClassEntity.name,
+                                                                  Id = sc.SubClassEntity.Id,
+                                                              }
+                                                              :
+                                                              new SubClassEntity(),
+                                            }),
                                         }).SelectMany(s => s.Persons).Skip(searchModel.skip).Take(searchModel.take);
         }
 
