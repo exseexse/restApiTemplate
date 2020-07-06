@@ -16,6 +16,8 @@ namespace restApiTemplateDBEntities
             modelBuilder.Entity<SubClassEntity>().HasOne(s => s.ParentEntity)
             .WithOne(e => e.SubClassEntity).HasForeignKey<SubClassEntity>(f => f.parentFK).OnDelete(DeleteBehavior.Cascade);
         }
+
+
         public virtual DbSet<ParentEntity> ParentEntity { get; set; }
         public virtual DbSet<ChildEntity> ChildEntity { get; set; }  
       
