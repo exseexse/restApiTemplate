@@ -19,7 +19,6 @@ namespace restApiTemplateDBEntities
               );
 
             return new OkObjectResult(jsonObject);
-
         }
 
         public BadRequestObjectResult returnBadRequest(object _object)
