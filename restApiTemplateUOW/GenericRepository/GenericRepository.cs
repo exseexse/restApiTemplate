@@ -21,6 +21,12 @@ namespace restApiTemplateUOW.GenericRepository
             return _context.Set<T>().Find(id);
         }
 
+        public int Count()
+        {
+            return _context.Set<T>().Count();
+        }
+
+
         public IEnumerable<T> GetAll()
         {
             return _context.Set<T>().ToList();
@@ -40,16 +46,19 @@ namespace restApiTemplateUOW.GenericRepository
         public void AddRange(IEnumerable<T> entities)
         {
             _context.AddRange(entities);
+            _context.SaveChanges();
         }
 
         public void Remove(T entity)
         {
             _context.Remove(entity);
+            _context.SaveChanges();
         }
 
         public void RemoveRange(IEnumerable<T> entities)
         {
             _context.RemoveRange(entities);
+            _context.SaveChanges();
         }
     }
 }

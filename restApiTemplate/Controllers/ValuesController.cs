@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using restApiTemplateDBEntities;
 using restApiTemplateSqliteDB;
+using restApiTemplateSqliteTestDB;
 using restApiTemplateUOW.UnitOfWork;
 
 namespace restApiTemplate.Controllers
@@ -26,7 +27,7 @@ namespace restApiTemplate.Controllers
                 worker.ParentEntityRepository.Add(newParent);
        
             }
-            using (UnitOfWork worker = new UnitOfWork(new sqliteMemoryDbContext()))
+            using (UnitOfWork worker = new UnitOfWork(new SqliteTestDbContext()))
             {
                 ParentEntity newParent = new ParentEntity();
                 newParent.createdDate = DateTime.Now;

@@ -21,5 +21,7 @@ namespace restApiTemplateUOW.GenericRepository
         void Remove(T entity);
 
         void RemoveRange(IEnumerable<T> entities);
+
+        int Count();
     }
 }
