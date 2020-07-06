@@ -9,7 +9,6 @@ namespace restApiTemplateDBEntities
         public string name { get; set; }
         public int sequenceNo { get; set; }
         public Nullable<DateTime> createdDate { get; set; }
-
         public virtual ParentEntity ParentEntity { get; set; }
     }
 
@@ -24,7 +23,6 @@ namespace restApiTemplateDBEntities
         public string name { get; set; }
         public int sequenceNo { get; set; }
         public DateTime? createdDate { get; set; }
-
         public virtual ICollection<ChildEntity> ChildEntity { get; set; }
     }
 }
