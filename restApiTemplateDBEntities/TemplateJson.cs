@@ -1,8 +1,9 @@
 ﻿
 
 
-using Newtonsoft.Json;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+
 namespace restApiTemplateDBEntities
 {
     public class SendJson
