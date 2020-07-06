@@ -1,16 +1,16 @@
 ﻿
 
 
-using Microsoft.AspNetCore.Mvc;
+
 using Newtonsoft.Json;
 
 namespace restApiTemplateDBEntities
 {
     public class SendJson
     {
-        public OkObjectResult returnOK(object _object)
+        public string returnJson(object _object)
         {
-            var jsonObject = JsonConvert.SerializeObject(_object, Formatting.Indented,
+            return JsonConvert.SerializeObject(_object, Formatting.Indented,
                   new JsonSerializerSettings()
                   {
                       ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore,
@@ -19,22 +19,8 @@ namespace restApiTemplateDBEntities
                   }
               );
 
-            return new OkObjectResult(jsonObject);
-        }
-
-        public BadRequestObjectResult returnBadRequest(object _object)
-        {
-            var jsonObject = JsonConvert.SerializeObject(_object, Formatting.Indented,
-                  new JsonSerializerSettings()
-                  {
-                      ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore,
-                      DateTimeZoneHandling = DateTimeZoneHandling.Unspecified
-                  }
-              );
-
-            return new BadRequestObjectResult(jsonObject);
-
-        }
+   
+        } 
 
 
     }

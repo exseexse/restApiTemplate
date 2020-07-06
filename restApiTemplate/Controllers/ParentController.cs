@@ -21,8 +21,8 @@ namespace restApiTemplate.Controllers
             {
                 var expression = PredicateBuilder.True<ParentEntity>();
                 expression = expression.And(s => s.name == formdata.searchText);
-                return new SendJson().returnOK(worker.ParentEntityRepository.getOrdered(formdata, expression));
-            }
+                return new OkObjectResult(new SendJson().returnJson(worker.ParentEntityRepository.getOrdered(formdata, expression)));
+            }     
     
         }
     }
