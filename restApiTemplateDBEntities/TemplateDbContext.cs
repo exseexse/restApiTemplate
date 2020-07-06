@@ -10,8 +10,8 @@ namespace restApiTemplateDBEntities
         {
             base.OnModelCreating(modelBuilder);
         }
-        public virtual DbSet<ParentEntity> Equipments { get; set; }
-        public virtual DbSet<ChildEntity> DataBaseModels { get; set; }  
+        public virtual DbSet<ParentEntity> ParentEntity { get; set; }
+        public virtual DbSet<ChildEntity> ChildEntity { get; set; }  
       
 
     }
