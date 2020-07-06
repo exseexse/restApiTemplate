@@ -27,6 +27,7 @@ namespace restApiTemplateUOW.UnitOfWork
         private bool _disposed = false;
         private IParentEntityRepository _IParentEntityRepository;
         private IChildEntityRepository _IChildEntityRepository;
+        private ISubClassEntityRepository _ISubClassEntityRepository;
         public IParentEntityRepository ParentEntityRepository
         {
             get
@@ -44,6 +45,16 @@ namespace restApiTemplateUOW.UnitOfWork
                 if (_IChildEntityRepository == null)
                     _IChildEntityRepository = new ChildEntityRepository(_dbContext);
                 return _IChildEntityRepository;
+            }
+        }
+
+        public ISubClassEntityRepository SubClassEntityRepository
+        {
+            get
+            {
+                if (_ISubClassEntityRepository == null)
+                    _ISubClassEntityRepository = new SubClassEntityRepository(_dbContext);
+                return _ISubClassEntityRepository;
             }
         }
 

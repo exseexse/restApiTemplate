@@ -34,6 +34,13 @@ namespace Tests
                 newParent.sequenceNo = 32;
                 newParent.ChildEntity.Add(newChild);
 
+                SubClassEntity newSubClass = new SubClassEntity();
+                var createSubClassDate = new DateTime(2020, 1, 10, 11, 25, 20);
+                newSubClass.createdDate = createSubClassDate;
+                newSubClass.name = "NewSubClass";
+                newSubClass.sequenceNo = 102;
+
+                newParent.SubClassEntity = newSubClass;
                 worker.ParentEntityRepository.Add(newParent);
 
 
@@ -53,6 +60,17 @@ namespace Tests
                 Assert.AreEqual(32, newChildDb.FirstOrDefault().sequenceNo);
                 Assert.AreEqual(createDateChild.ToString(), newChildDb.FirstOrDefault().createdDate.ToString());
                 Assert.Greater(newChildDb.FirstOrDefault().Id, 0);
+
+
+                Assert.AreEqual(1, worker.SubClassEntityRepository.Count());
+                var newSubClassDb = worker.SubClassEntityRepository.GetAll().ToList();
+                Assert.AreEqual(1, newSubClassDb.Count);
+                Assert.AreEqual("NewSubClass", newSubClassDb.FirstOrDefault().name);
+                Assert.AreEqual(102, newSubClassDb.FirstOrDefault().sequenceNo);
+                Assert.AreEqual(createSubClassDate.ToString(), newSubClassDb.FirstOrDefault().createdDate.ToString());
+                Assert.Greater(newSubClassDb.FirstOrDefault().Id, 0);
+
+
             }
 
         }
@@ -71,8 +89,20 @@ namespace Tests
         }
 
 
-
         [Test, Order(3)]
+        public void deleteSubClassEntity()
+        {
+            using (UnitOfWork worker = new UnitOfWork(new SqliteTestDbContext()))
+            {
+                var newSubClassDb = worker.SubClassEntityRepository.GetAll().ToList();
+                worker.SubClassEntityRepository.Remove(newSubClassDb.FirstOrDefault());
+                newSubClassDb = worker.SubClassEntityRepository.GetAll().ToList();
+                Assert.AreEqual(0, newSubClassDb.Count);
+            }
+        }
+
+
+        [Test, Order(4)]
         public void deleteParentEntity()
         {
             using (UnitOfWork worker = new UnitOfWork(new SqliteTestDbContext()))
@@ -84,7 +114,7 @@ namespace Tests
             }
         }
 
-        [Test, Order(4)]
+        [Test, Order(5)]
         public void deleteCascadeParentEntity()
         {
             using (UnitOfWork worker = new UnitOfWork(new SqliteTestDbContext()))
@@ -113,6 +143,9 @@ namespace Tests
 
                 var newChildDb = worker.ChildEntityRepository.GetAll().ToList();
                 Assert.AreEqual(0, newChildDb.Count);
+
+                var newSubClassDb = worker.SubClassEntityRepository.GetAll().ToList();
+                Assert.AreEqual(0, newSubClassDb.Count);
             }
 
         }
