@@ -16,6 +16,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using restApiTemplateDBEntities;
 using restApiTemplateSqliteDB;
+using RestServices;
 
 namespace restApiTemplate
 {
@@ -32,6 +33,9 @@ namespace restApiTemplate
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+
+            services.AddSingleton<IRemoteParentRestService, RemoteMockParentRestService>();
 
             // Enable CORS
             services.AddCors(options =>

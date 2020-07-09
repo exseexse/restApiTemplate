@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "restApiTemplateUOW", "restA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "restApiTemplateSqliteTestDB", "restApiTemplateSqliteTestDB\restApiTemplateSqliteTestDB.csproj", "{4D8A1300-9258-4F66-AE7D-A87677B07A37}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestServices", "RestServices\RestServices.csproj", "{496D2A9A-4E42-4ABF-8033-C541DC099A55}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{4D8A1300-9258-4F66-AE7D-A87677B07A37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D8A1300-9258-4F66-AE7D-A87677B07A37}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D8A1300-9258-4F66-AE7D-A87677B07A37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{496D2A9A-4E42-4ABF-8033-C541DC099A55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{496D2A9A-4E42-4ABF-8033-C541DC099A55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{496D2A9A-4E42-4ABF-8033-C541DC099A55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{496D2A9A-4E42-4ABF-8033-C541DC099A55}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
